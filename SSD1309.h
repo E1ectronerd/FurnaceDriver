@@ -19,7 +19,7 @@ Authors: Owen Lyke
 #include <map>
 #include <vector>
 
-#include "OLEDdriver.h"
+//#include "OLEDdriver.h"
 
 #include "hardware/pio.h"
 #include "pico/stdlib.h"
@@ -41,6 +41,17 @@ Authors: Owen Lyke
 #define SSD1309_RAM_BYTES (SSD1309_MAX_WIDTH*(SSD1309_MAX_HEIGHT/8))
 
 // #define SSD1309_DEFAULT_WORKING_NUM_BYTES 2*64
+
+// SPI Defines
+// We are going to use SPI 0, and allocate it to the following GPIO pins
+// Pins can be changed, see the GPIO function select table in the datasheet for information on GPIO assignments
+#define SPI_PORT spi0
+#define PIN_MOSI 3   // SCA Main Out Subnode In
+#define PIN_MISO 4   // Not used for display
+#define PIN_CS   5   // Chip Select - board pin 7
+#define PIN_SCK  2   // D0 Clock SCLK - board pin 3
+#define PIN_DC   6   // Data/Command 1=data 0=command  - board pin 6
+#define PIN_RES  7   // Reset 0=reset 1=operate - board pin 5
 
 typedef void * color_t;
 
